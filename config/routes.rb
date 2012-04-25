@@ -1,4 +1,9 @@
 Shopping::Application.routes.draw do
+  resources :components
+
+  match '/' => 'categories#index'
+
+
   resources :sub_categories
 
   resources :categories

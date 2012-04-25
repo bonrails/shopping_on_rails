@@ -5,3 +5,29 @@
  *= require_self
  *= require_tree . 
 */
+#page
+{
+ width: 900px;
+ height: 900px;
+ margin: 0 auto;
+
+}
+.categories
+{
+ float: left;
+ margin-left: 179px;
+ margin-top: 30px;
+ background-color: LightYellow;
+}
+.categories
+  li
+    {
+    float: left;
+    width: 76px;
+    display: block;
+    }
+ul.sub{
+    width: 30px;
+    margin-left: -40px;
+    padding-top: 10px;
+}

@@ -1,14 +1,57 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
   <title>Shopping</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1038.36">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Courier}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; min-height: 14.0px}
+  </style>
 </head>
 <body>
+<p class="p1">
+<%=stylesheet_link_tag "application" %>
+<%= javascript_include_tag "application" %> <%= csrf_meta_tags%>
+</p>
+<div id="page">
+<ul class="categories">
+  <% @categories.each do |category| %>
+  <% if category.parent_id==nil %>
+  <li>
+    <a href="" title ="<%=category.name%>" rel ="<%=category.id%>"><%=category.name%></a>
+    <%  id=category.id %>
+    <ul class="sub" id="<%=category.name%>">
+      <% @categories.each do |sb| %>
+      <% if sb.parent_id==id %>
+         <li>
+           <a href=""  title="<%= sb.name.to_s+sb.id.to_s%>"><%= sb.name%></a>
+           <ul class="sub_nav" id="<%= sb.name.to_s+sb.id.to_s%>">
+             <% @categories.each do |nav| %>
+             <% if nav.parent_id==sb.id %>
+                <li>
+                  <a href=""  title=""><%= nav.name %></a>
+                </li>
+             <%end %>
+             <%end %>
+           </ul>
+         </li>
+      <%end %>
+      <%end %>
+    </ul>
+  </li> 
+  <% end %>
+  <% end %>
+</ul>
+
+    
+    
+
 
 <%= yield %>
-
+</div>
 </body>
 </html>

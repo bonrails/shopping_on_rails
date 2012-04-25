@@ -7,7 +7,6 @@ class AddDataToCategoryTable < ActiveRecord::Migration
 					
   end
   def self.down
-     
       Category.destroy_all
 	end
 end
